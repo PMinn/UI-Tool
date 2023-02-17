@@ -1,0 +1,377 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Tool</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #D0E2F4;
+        }
+
+        .colors,
+        .tags,
+        .color {
+            display: flex;
+        }
+
+        .colors,
+        .color-selector,
+        #secondarys,
+        #accents {
+            width: 86%;
+            padding: 7%;
+        }
+
+        h2 {
+            width: 86%;
+            padding: 0 7%;
+            margin: 0;
+        }
+
+        .colors {
+            flex-wrap: wrap;
+        }
+
+        .color {
+            align-items: center;
+            width: 50%;
+            margin: 10px 0;
+        }
+
+        .circle {
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .tag {
+            padding: 2.5px 5px;
+            border-radius: 15px;
+            border: 1px solid #000;
+        }
+
+        .tag,
+        .circle {
+            margin-right: 5px;
+        }
+
+        .colorCircle {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background-color: #fff;
+            border: 5px solid #fff;
+            cursor: pointer;
+        }
+
+        input[type="color"] {
+            height: 0;
+            width: 0;
+            opacity: 0;
+        }
+
+        #secondarys {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        #accents {
+            width: 1100px;
+            height: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .output {
+            width: 50px;
+            height: 50px;
+        }
+
+        #result {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            width: 100%;
+        }
+
+        #result>div {
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        #result>div:nth-child(1) {
+            width: 60%;
+        }
+
+        #result>div:nth-child(2) {
+            width: 30%;
+        }
+
+        #result>div:nth-child(3) {
+            width: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="colors">
+        <div class="color">
+            <div class="circle" style="background-color: #AE2827;"></div>
+            <div class="tags">
+                <div class="tag">熱情</div>
+                <div class="tag">溫暖</div>
+                <div class="tag">活力的</div>
+                <div class="tag">警示</div>
+                <div class="tag">飢餓的</div>
+            </div>
+        </div>
+        <div class="color">
+            <div class="circle" style="background-color: #CF6E13;"></div>
+            <div class="tags">
+                <div class="tag">自信</div>
+                <div class="tag">友善</div>
+                <div class="tag">活潑</div>
+                <div class="tag">快樂</div>
+                <div class="tag">力量的</div>
+            </div>
+        </div>
+        <div class="color">
+            <div class="circle" style="background-color: #EDAE1E;"></div>
+            <div class="tags">
+                <div class="tag">正向</div>
+                <div class="tag">創造立</div>
+                <div class="tag">歡樂的</div>
+                <div class="tag">樂觀</div>
+                <div class="tag">年輕的</div>
+            </div>
+        </div>
+
+        <div class="color">
+            <div class="circle" style="background-color: #45A54D;"></div>
+            <div class="tags">
+                <div class="tag">健康</div>
+                <div class="tag">自然的</div>
+                <div class="tag">新鮮</div>
+                <div class="tag">環保</div>
+                <div class="tag">成長的</div>
+            </div>
+        </div>
+        <div class="color">
+            <div class="circle" style="background-color: #3C6CB4;"></div>
+            <div class="tags">
+                <div class="tag">專業</div>
+                <div class="tag">穩定</div>
+                <div class="tag">科技感</div>
+                <div class="tag">信賴</div>
+                <div class="tag">安全</div>
+            </div>
+        </div>
+        <div class="color">
+            <div class="circle" style="background-color: #389BB4;"></div>
+            <div class="tags">
+                <div class="tag">和平</div>
+                <div class="tag">想像力</div>
+                <div class="tag">智慧</div>
+                <div class="tag">哲學的</div>
+                <div class="tag">治療</div>
+            </div>
+        </div>
+        <div class="color">
+            <div class="circle" style="background-color: #0A0505;"></div>
+            <div class="tags">
+                <div class="tag">質感</div>
+                <div class="tag">神秘</div>
+                <div class="tag">沉穩的</div>
+                <div class="tag">奢華</div>
+                <div class="tag">經典</div>
+                <div class="tag">俐落</div>
+            </div>
+        </div>
+        <div class="color">
+            <div class="circle" style="background-color: #FFFFFF;"></div>
+            <div class="tags">
+                <div class="tag">簡約</div>
+                <div class="tag">明亮的</div>
+                <div class="tag">質感</div>
+                <div class="tag">現代</div>
+                <div class="tag">純潔</div>
+                <div class="tag">乾淨</div>
+            </div>
+        </div>
+    </div>
+    <h2>主色</h2>
+    <div class="color-selector">
+        <label class="colorCircle" for="primary"></label>
+        <input type="color" id="primary" value="#ffffff">
+    </div>
+    <h2>次色</h2>
+    <div id="secondarys"></div>
+    <h2>輔助色</h2>
+    <div id="accents"></div>
+    <div id="result">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <script>
+        /*
+            r,g,b -> 0-255
+            h -> 0-360
+            s -> 0-1
+            v -> 0-1
+        */
+
+        const int = parseInt;
+        const secondarys = document.getElementById('secondarys');
+        const accents = document.getElementById('accents');
+
+        function hexToRgb(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? [int(result[1], 16), int(result[2], 16), int(result[3], 16)] : null;
+        }
+
+        function rgbToHsv(r, g, b) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+            var max = Math.max(r, g, b), min = Math.min(r, g, b);
+            var h, s, v = max;
+            var d = max - min;
+            s = max == 0 ? 0 : d / max;
+            if (max == min) {
+                h = 0;
+            } else {
+                switch (max) {
+                    case r:
+                        h = (g - b) / d + (g < b ? 6 : 0);
+                        break;
+                    case g:
+                        h = (b - r) / d + 2;
+                        break;
+                    case b:
+                        h = (r - g) / d + 4;
+                        break;
+                }
+                h /= 6;
+            }
+            h *= 360;
+            return [h, s, v];
+        }
+
+        function hsvToHsl(hv, sv, v) {
+            var hl = hv;
+            var l = v * (1 - sv / 2);
+            var sl = (l == 0 || l == 1 ? 0 : (v - l) / Math.min(l, 1 - l));
+            return [hl, l, sl];
+        }
+
+        function hslToRgb(h, s, l) {
+            h /= 360;
+            var r, g, b;
+            if (s == 0) {
+                r = g = b = l;
+            } else {
+                function hue2rgb(p, q, t) {
+                    if (t < 0) t += 1;
+                    if (t > 1) t -= 1;
+                    if (t < 1 / 6) return p + (q - p) * 6 * t;
+                    if (t < 1 / 2) return q;
+                    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+                    return p;
+                }
+                var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                var p = 2 * l - q;
+                r = hue2rgb(p, q, h + 1 / 3);
+                g = hue2rgb(p, q, h);
+                b = hue2rgb(p, q, h - 1 / 3);
+            }
+            return [r * 255, g * 255, b * 255];
+        }
+
+        function rgbToHex(r, g, b) {
+            function valueToHex(c) {
+                return (c < 16 ? '0' + c.toString(16) : c.toString(16));
+            }
+            return (valueToHex(r) + valueToHex(g) + valueToHex(b));
+        }
+
+        document.querySelector('input[type="color"]').addEventListener('change', e => {
+            function createDemo(rgb) {
+                var div = document.createElement('div');
+                div.classList.add('output');
+                div.style.backgroundColor = `rgb(${int(rgb[0])},${int(rgb[1])},${int(rgb[2])})`;
+                div.dataset.rgb = `${int(rgb[0])},${int(rgb[1])},${int(rgb[2])}`;
+                div.dataset.hex = rgbToHex(int(rgb[0]), int(rgb[1]), int(rgb[2]));
+                return div;
+            }
+
+            secondarys.innerHTML = '';
+            accents.innerHTML = '';
+
+            document.querySelector('#result>div:nth-child(1)').style.backgroundColor = e.target.value;
+            document.querySelector('#result>div:nth-child(1)').innerText = e.target.value;
+
+            document.querySelector(`label[for="${e.target.id}"]`).style.backgroundColor = e.target.value;
+            var rgb = hexToRgb(e.target.value);
+            var hsv = rgbToHsv(rgb[0], rgb[1], rgb[2]);
+            console.log(hsv)
+            for (var s = 5; s <= 10; s++) {
+                for (var v = 95; v <= 100; v++) {
+                    let hsl = hsvToHsl(hsv[0], s / 100, v / 100);
+                    let rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
+                    var div = createDemo(rgb);
+                    div.addEventListener('click', divClickEvent => {
+                        document.querySelector('#result>div:nth-child(2)').style.backgroundColor = `rgb(${divClickEvent.target.dataset.rgb})`;
+                        document.querySelector('#result>div:nth-child(2)').innerText = '#' + divClickEvent.target.dataset.hex;
+                    })
+                    secondarys.appendChild(div);
+                }
+            }
+
+            for (var h = 30; h <= 40; h++) {
+                for (var v = 5; v <= 10; v++) {
+                    let hsl = hsvToHsl(hsv[0] + h, hsv[1], hsv[2] + v / 100);
+                    let rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
+                    var div = createDemo(rgb);
+                    div.addEventListener('click', divClickEvent => {
+                        document.querySelector('#result>div:nth-child(3)').style.backgroundColor = `rgb(${divClickEvent.target.dataset.rgb})`;
+                        document.querySelector('#result>div:nth-child(3)').innerText = '#' + divClickEvent.target.dataset.hex;
+                    })
+                    accents.appendChild(div);
+                }
+            }
+            for (var h = -40; h <= -30; h++) {
+                for (var v = 5; v <= 10; v++) {
+                    let hsl = hsvToHsl(hsv[0] + h, hsv[1], hsv[2] + v / 100);
+                    let rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
+                    var div = createDemo(rgb);
+                    div.addEventListener('click', divClickEvent => {
+                        document.querySelector('#result>div:nth-child(3)').style.backgroundColor = `rgb(${divClickEvent.target.dataset.rgb})`;
+                        document.querySelector('#result>div:nth-child(3)').innerText = '#' + divClickEvent.target.dataset.hex;
+                    })
+                    accents.appendChild(div);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
